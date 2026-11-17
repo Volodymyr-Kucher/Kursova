@@ -1,0 +1,244 @@
+/* ------------------------------------------------------------------
+   ARGUS · Каркас робочого місця: заголовок, бічна навігація, робоча область
+   Токени IBM Carbon 11, тема Gray 100
+   ------------------------------------------------------------------ */
+
+.argus-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-page);
+}
+
+/* ========== ЗАГОЛОВОК ========== */
+.argus-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-05);
+  height: var(--header-height);
+  padding: 0 var(--space-06);
+  background-color: var(--color-page);
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
+}
+
+.argus-header__brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-04);
+  font-size: var(--heading-02-size);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.argus-header__brand span {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.argus-header__shift {
+  font-family: var(--font-mono);
+  font-size: var(--label-01-size);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.argus-header__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-05);
+  min-width: 0;
+}
+
+.argus-header__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-03);
+  min-width: 0;
+}
+
+.argus-header__username {
+  font-size: var(--body-01-size);
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.argus-header__role {
+  font-family: var(--font-mono);
+  font-size: var(--label-01-size);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px var(--space-03);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.argus-header__role--operator {
+  background-color: var(--blue-70);
+  color: var(--white);
+}
+
+.argus-header__role--analyst {
+  background-color: var(--color-surface-accent);
+  color: var(--color-text);
+}
+
+/* ========== ІНДИКАТОР ПОТОКУ ========== */
+.argus-stream {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-02);
+  font-size: var(--label-01-size);
+  white-space: nowrap;
+}
+
+.argus-stream__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.argus-stream--open {
+  color: var(--green-40);
+}
+.argus-stream--open .argus-stream__dot {
+  background-color: var(--green-40);
+}
+
+.argus-stream--connecting {
+  color: var(--yellow-30);
+}
+.argus-stream--connecting .argus-stream__dot {
+  background-color: var(--yellow-30);
+}
+
+.argus-stream--closed {
+  color: var(--red-50);
+}
+.argus-stream--closed .argus-stream__dot {
+  background-color: var(--red-50);
+}
+
+/* ========== ТІЛО ТА НАВІГАЦІЯ ========== */
+.argus-app__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.argus-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-01);
+  width: var(--nav-width);
+  flex-shrink: 0;
+  padding: var(--space-05) 0;
+  background-color: var(--color-page);
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.argus-nav__title {
+  padding: 0 var(--space-05) var(--space-03);
+  font-size: var(--label-01-size);
+  letter-spacing: var(--label-01-spacing);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.argus-app__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-05);
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-07);
+}
+
+.argus-app__main > * {
+  max-width: 1440px;
+  width: 100%;
+}
+
+/* ========== ДРУГИЙ РІВЕНЬ (планишет) ========== */
+@media (max-width: 1056px) {
+  .argus-nav {
+    width: 200px;
+  }
+
+  .argus-app__main {
+    padding: var(--space-06);
+  }
+}
+
+/* ========== ПЕРШИЙ РІВЕНЬ (вузький екран) ========== */
+@media (max-width: 900px) {
+  .argus-app__body {
+    flex-direction: column;
+  }
+
+  .argus-nav {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .argus-nav__title {
+    display: none;
+  }
+
+  .argus-nav .argus-nav-item {
+    width: auto;
+    max-width: none;
+    flex: 0 0 auto;
+    height: 40px;
+    padding: 0 var(--space-05);
+  }
+
+  .argus-nav .argus-nav-item.is-active {
+    box-shadow: inset 0 -2px 0 var(--color-interactive);
+  }
+
+  .argus-header__shift {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .argus-header {
+    height: auto;
+    flex-wrap: wrap;
+    gap: var(--space-03);
+    padding: var(--space-03) var(--space-05);
+  }
+
+  .argus-header__tools {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--space-03);
+  }
+
+  .argus-header__username {
+    max-width: 120px;
+  }
+
+  .argus-app__main {
+    padding: var(--space-05);
+    gap: var(--space-04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

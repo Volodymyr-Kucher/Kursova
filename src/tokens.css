@@ -1,0 +1,133 @@
+/* ------------------------------------------------------------------
+   ARGUS · Design tokens & semantic variables
+   Source: IBM Carbon v11 (theme Gray 100)
+   ------------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap");
+
+:root {
+  /* ========== 1 · PRIMITIVES ========== */
+
+  /* Neutrals (Carbon gray ramp) */
+  --gray-100: #161616;   /* the page */
+  --gray-90:  #262626;   /* a panel, a card, a table row */
+  --gray-80:  #393939;   /* a table header, a divider, a secondary button */
+  --gray-70:  #525252;   /* a subtle border, a gray tag */
+  --gray-60:  #6f6f6f;   /* a strong border, a field underline */
+  --gray-50:  #8d8d8d;
+  --gray-40:  #a8a8a8;   /* helper text */
+  --gray-30:  #c6c6c6;   /* secondary text */
+  --gray-10:  #f4f4f4;   /* primary text */
+  --white:    #ffffff;
+
+  /* Colour */
+  --blue-60:  #0f62fe;   /* the primary button */
+  --blue-50:  #4589ff;   /* interactive, focus ring, selected */
+  --blue-40:  #78a9ff;   /* a link on a dark surface */
+  --blue-70:  #0043ce;
+  --blue-20:  #d0e2ff;   /* blue tag */
+  --red-50:   #fa4d56;   /* danger, high severity */
+  --red-70:   #a2191f;
+  --red-10:   #ffd7d9;   /* red tag */
+  --yellow-30:#f1c21b;   /* warning, medium severity */
+  --green-40: #42be65;   /* success */
+  --green-70: #0e6027;
+  --green-20: #a7f0ba;   /* green tag */
+  --cyan-70:  #00539a;
+  --cyan-20:  #bae6ff;   /* cyan tag */
+
+  /* Space */
+  --space-01: 2px;
+  --space-02: 4px;
+  --space-03: 8px;
+  --space-04: 12px;
+  --space-05: 16px;
+  --space-06: 24px;
+  --space-07: 32px;
+  --space-08: 40px;
+  --space-09: 48px;
+  --space-10: 64px;
+
+  /* Type */
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', Menlo, Consolas, Courier, monospace;
+
+  --label-01-size: .75rem;
+  --label-01-height: 1.33333;
+  --label-01-spacing: .32px;
+  --body-01-size: .875rem;
+  --body-01-height: 1.42857;
+  --body-01-spacing: .16px;
+  --body-compact-01-size: .875rem;
+  --body-compact-01-height: 1.28572;
+  --heading-01-size: .875rem;
+  --heading-01-height: 1.42857;
+  --heading-01-weight: 600;
+  --heading-02-size: 1rem;
+  --heading-02-height: 1.5;
+  --heading-02-weight: 600;
+  --heading-03-size: 1.25rem;
+  --heading-03-height: 1.4;
+  --heading-04-size: 1.75rem;
+  --heading-04-height: 1.28572;
+
+  /* Shape */
+  --radius-none: 0;
+  --radius-tag: 12px;
+
+  /* Sizes */
+  --header-height: 48px;
+  --nav-width: 256px;
+  --row-height: 48px;
+  --field-height: 40px;
+  --button-height-sm: 32px;
+
+  /* ========== 2 · SEMANTIC ========== */
+  --color-page:            var(--gray-100);
+  --color-surface:         var(--gray-90);
+  --color-surface-accent:  var(--gray-80);
+  --color-border-subtle:   var(--gray-70);
+  --color-border-strong:   var(--gray-60);
+  --color-text:            var(--gray-10);
+  --color-text-secondary:  var(--gray-30);
+  --color-text-muted:      var(--gray-40);
+  --color-action:          var(--blue-60);
+  --color-action-hover:    #0353e9;
+  --color-interactive:     var(--blue-50);
+  --color-link:            var(--blue-40);
+  --color-danger:          var(--red-50);
+  --color-danger-hover:    #da1e28;
+  --color-warning:         var(--yellow-30);
+  --color-success:         var(--green-40);
+
+  /* Status tag pairs (ensuring 4.5:1+ contrast) */
+  --tag-unack-bg:   var(--red-70);
+  --tag-unack-text: var(--red-10);
+  --tag-ack-bg:     var(--gray-70);
+  --tag-ack-text:   var(--gray-10);
+  --tag-assign-bg:  var(--blue-70);
+  --tag-assign-text:var(--blue-20);
+  --tag-coll-bg:    var(--cyan-70);
+  --tag-coll-text:  var(--cyan-20);
+  --tag-done-bg:    var(--green-70);
+  --tag-done-text:  var(--green-20);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--body-01-size);
+  line-height: var(--body-01-height);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-interactive);
+  outline-offset: 2px;
+}
+

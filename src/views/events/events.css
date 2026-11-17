@@ -1,0 +1,222 @@
+/* ------------------------------------------------------------------
+   ARGUS · Журнал подій: смуга показників, фільтри, таблиця, деталі
+   ------------------------------------------------------------------ */
+
+.argus-events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-05);
+}
+
+/* ========== ПОКАЗНИКИ ========== */
+.argus-events__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-04);
+  flex-wrap: wrap;
+  font-size: var(--body-01-size);
+  color: var(--color-text-secondary);
+}
+
+.argus-events__summary b {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.argus-events__summary-alert {
+  color: var(--red-50);
+}
+
+.argus-events__mode {
+  color: var(--color-text-muted);
+}
+
+.argus-events__updated {
+  font-family: var(--font-mono);
+  font-size: var(--label-01-size);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ========== ФІЛЬТРИ ========== */
+.argus-events__toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 200px 200px;
+  gap: var(--space-04);
+  align-items: end;
+}
+
+.argus-events__toolbar-actions {
+  display: flex;
+  gap: var(--space-03);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.argus-events__toolbar-row {
+  display: flex;
+  gap: var(--space-03);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ========== ВМІСТ: СПИСОК + ДЕТАЛІ ========== */
+.argus-events__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-05);
+  align-items: start;
+}
+
+.argus-events__list {
+  min-width: 0;
+}
+
+.argus-events__table .argus-table th,
+.argus-events__table .argus-table td {
+  padding-left: var(--space-04);
+  padding-right: var(--space-04);
+}
+
+.argus-events__details {
+  min-width: 0;
+}
+
+/* ========== КАРТКИ ДЛЯ ВУЗЬКОГО ЕКРАНА ========== */
+.argus-events__cards {
+  display: none;
+  flex-direction: column;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface);
+}
+
+.argus-event-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-02);
+  width: 100%;
+  padding: var(--space-04) var(--space-05);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--body-01-size);
+  text-align: left;
+  cursor: pointer;
+}
+
+.argus-event-card:last-child {
+  border-bottom: none;
+}
+
+.argus-event-card.is-selected {
+  background-color: var(--color-surface-accent);
+  box-shadow: inset 3px 0 0 var(--color-interactive);
+}
+
+.argus-event-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-03);
+}
+
+.argus-event-card__title {
+  font-weight: 600;
+  line-height: var(--body-compact-01-height);
+  overflow-wrap: anywhere;
+}
+
+.argus-event-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-04);
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--label-01-size);
+  color: var(--color-text-muted);
+}
+
+.argus-event-card__action {
+  margin-top: var(--space-02);
+}
+
+/* ========== ПАНЕЛЬ ДЕТАЛЕЙ ========== */
+.argus-details__dl {
+  display: grid;
+  grid-template-columns: minmax(96px, 40%) minmax(0, 1fr);
+  gap: var(--space-03) var(--space-04);
+  margin: 0;
+  font-size: var(--body-01-size);
+}
+
+.argus-details__dt {
+  color: var(--color-text-muted);
+  font-size: var(--label-01-size);
+  align-self: center;
+}
+
+.argus-details__dd {
+  margin: 0;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.argus-details__actions {
+  display: flex;
+  gap: var(--space-03);
+  flex-wrap: wrap;
+  margin-top: var(--space-05);
+}
+
+.argus-details__hint {
+  margin: 0;
+  font-size: var(--body-01-size);
+  line-height: var(--body-01-height);
+  color: var(--color-text-secondary);
+}
+
+/* ========== АДАПТИВНІСТЬ ========== */
+/* Панель деталей поруч із таблицею лише на широких екранах, інакше таблиця обрізається */
+@media (min-width: 1680px) {
+  .argus-events__content {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+}
+
+@media (max-width: 900px) {
+  .argus-events__toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .argus-events__table {
+    display: none;
+  }
+
+  .argus-events__cards {
+    display: flex;
+  }
+
+  .argus-events__summary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-02);
+  }
+
+  .argus-events__toolbar-actions {
+    width: 100%;
+  }
+
+  .argus-events__toolbar-actions .argus-btn {
+    flex: 1 1 auto;
+  }
+
+  .argus-panel__body {
+    padding: var(--space-04);
+  }
+}
